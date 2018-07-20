@@ -21,6 +21,7 @@
     "**/acceptance-tests/*",
     "**/webpack/*",
     "**/jest/*",
-    "**/setupTests.ts"
+    "**/setupTests.ts",
+    "**/config-overrides.js"
   ]
 }
