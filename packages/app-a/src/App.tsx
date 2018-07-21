@@ -1,4 +1,4 @@
-import { Main } from 'mymain';
+import { Main } from '@app/simple-comp';
 import * as React from 'react';
 import './App.css';
 
