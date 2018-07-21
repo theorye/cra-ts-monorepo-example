@@ -2,7 +2,6 @@
   "private": true,
   "name": "cra-ts-monorepo-example",
   "workspaces": [
-    "webapp",
     "packages/*"
   ]
 }
