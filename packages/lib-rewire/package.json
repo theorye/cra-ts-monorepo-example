@@ -5,6 +5,8 @@
   "main": "index.js",
   "private": true,
   "dependencies": {
-    "react-app-rewire-css-modules": "watiko/react-app-rewire-css-modules"
+    "node-sass": "^4.9.2",
+    "react-app-rewire-css-modules": "watiko/react-app-rewire-css-modules#2c97c1c7e680c4c68392a3e8225f4731950d3c9a",
+    "sass-loader": "^7.0.3"
   }
 }

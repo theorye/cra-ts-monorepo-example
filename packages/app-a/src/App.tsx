@@ -1,9 +1,10 @@
 import * as React from 'react';
 import './App.css';
 
-import { Main } from '@app/simple-comp';
+import { Main } from 'lib-simple-comp';
 import { CSSModuleSample } from './CSSModuleSample';
 import logo from './logo.svg';
+import { SCSSModuleSample } from './SCSSModuleSample';
 
 class App extends React.Component {
   public render() {
@@ -14,6 +15,7 @@ class App extends React.Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <CSSModuleSample />
+        <SCSSModuleSample />
         <Main />
       </div>
     );
