@@ -1,4 +1,7 @@
 const { compose } = require('react-app-rewired');
-const { rewireAllowDirectImportTs } = require('@app/rewire');
+const { rewireAllowDirectImportTs, rewireCssModules } = require('@app/rewire');
 
-module.exports = compose(rewireAllowDirectImportTs);
+module.exports = compose(
+  rewireAllowDirectImportTs,
+  rewireCssModules
+);

@@ -1,6 +1,7 @@
 const { paths, getLoader } = require('react-app-rewired');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const rewireCssModules = require('react-app-rewire-css-modules');
 
 const regexEquals = (x, y) => x.toString() === y.toString();
 
@@ -24,4 +25,5 @@ function rewireAllowDirectImportTs(config, env) {
 
 module.exports = {
   rewireAllowDirectImportTs,
+  rewireCssModules,
 };
