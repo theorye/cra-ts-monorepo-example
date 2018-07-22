@@ -3,6 +3,17 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const rewireCssModules = require('react-app-rewire-css-modules');
 
+/**
+ * USAGE: compose(createLogger('/tmp/webpack.config.json'), ...)
+ * @param {string} outputPath
+ */
+const createLogger = (outputPath) => (config, _env) => {
+    const fs = require('fs');
+    const replacer = (_, v) => v instanceof RegExp ? v.toString() : v;
+    fs.writeFileSync(outputPath, JSON.stringify(config, replacer, 2));
+    return config;
+  }
+
 const regexEquals = (x, y) => x.toString() === y.toString();
 
 function rewireAllowDirectImportTs(config, env) {
@@ -24,6 +35,7 @@ function rewireAllowDirectImportTs(config, env) {
 }
 
 module.exports = {
+  createLogger,
   rewireAllowDirectImportTs,
   rewireCssModules,
 };
