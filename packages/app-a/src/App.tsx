@@ -1,7 +1,8 @@
-import { Main } from '@app/simple-comp';
 import * as React from 'react';
 import './App.css';
 
+import { Main } from '@app/simple-comp';
+import { CSSModuleSample } from './CSSModuleSample';
 import logo from './logo.svg';
 
 class App extends React.Component {
@@ -12,6 +13,7 @@ class App extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
+        <CSSModuleSample />
         <Main />
       </div>
     );
