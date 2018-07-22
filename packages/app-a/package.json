@@ -9,6 +9,10 @@
     "react-scripts-ts": "2.16.0"
   },
   "scripts": {
+    "_format-base": "prettier --config ./prettier.config.js \"src/**/*.{ts,tsx,json,css,scss}\"",
+    "format": "npm run _format-base -- --write",
+    "format-check": "npm run _format-base -- --list-different",
+    "precommit": "lint-staged",
     "start": "react-app-rewired start --scripts-version react-scripts-ts",
     "build": "react-app-rewired build --scripts-version react-scripts-ts",
     "test": "react-app-rewired test --scripts-version react-scripts-ts --env=jsdom",
@@ -21,6 +25,8 @@
     "@types/react": "^16.3.17",
     "@types/react-dom": "^16.0.6",
     "babel-jest": "^23.0.1",
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.13.7",
     "react-app-rewired": "^1.5.2",
     "typescript": "^2.9.1"
   },
@@ -84,5 +90,11 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,json,css,scss}": [
+      "prettier --config ./prettier.config.js --write",
+      "git add"
+    ]
   }
 }

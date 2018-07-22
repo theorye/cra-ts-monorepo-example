@@ -2,8 +2,23 @@
   "name": "@app/simple-comp",
   "version": "0.1.0",
   "license": "UNLICENSED",
-
   "main": "build/index.js",
   "types": "build/index.d.ts",
-  "private": true
+  "private": true,
+  "scripts": {
+    "_format-base": "prettier --config ./prettier.config.js \"src/**/*.{ts,tsx,json,css,scss}\"",
+    "format": "npm run _format-base -- --write",
+    "format-check": "npm run _format-base -- --list-different",
+    "precommit": "lint-staged"
+  },
+  "devDependencies": {
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.13.7"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,json,css,scss}": [
+      "prettier --config ./prettier.config.js --write",
+      "git add"
+    ]
+  }
 }

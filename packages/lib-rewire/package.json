@@ -4,9 +4,25 @@
   "license": "UNLICENSED",
   "main": "index.js",
   "private": true,
+  "scripts": {
+    "_format-base": "prettier --config ./prettier.config.js index.js",
+    "format": "npm run _format-base -- --write",
+    "format-check": "npm run _format-base -- --list-different",
+    "precommit": "lint-staged"
+  },
   "dependencies": {
     "node-sass": "^4.9.2",
     "react-app-rewire-css-modules": "watiko/react-app-rewire-css-modules#2c97c1c7e680c4c68392a3e8225f4731950d3c9a",
     "sass-loader": "^7.0.3"
+  },
+  "devDependencies": {
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.13.7"
+  },
+  "lint-staged": {
+    "index.js": [
+      "prettier --config ./prettier.config.js --write",
+      "git add"
+    ]
   }
 }
