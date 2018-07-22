@@ -3,5 +3,8 @@
   "name": "cra-ts-monorepo-example",
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "lerna": "^2.11.0"
+  }
 }
