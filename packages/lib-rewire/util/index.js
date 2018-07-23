@@ -1,60 +1,32 @@
-// https://github.com/timarney/react-app-rewired/blob/1.5.2/packages/react-app-rewired/index.js
-// LICENSE: MIT
+const rewiredUtils = require('./rewired');
+const rewireCssModules = require('react-app-rewire-css-modules');
 
-const loaderNameMatches = function(rule, loader_name) {
-  return rule && rule.loader && typeof rule.loader === 'string' &&
-    (rule.loader.indexOf(`${path.sep}${loader_name}${path.sep}`) !== -1 ||
-    rule.loader.indexOf(`@${loader_name}${path.sep}`) !== -1);
-};
-
-const babelLoaderMatcher = function(rule) {
-  return loaderNameMatches(rule, 'babel-loader');
-};
-
-const getLoader = function(rules, matcher) {
-  let loader;
-
-  rules.some(rule => {
-    return (loader = matcher(rule)
-      ? rule
-      : getLoader(rule.use || rule.oneOf || (Array.isArray(rule.loader) && rule.loader) || [], matcher));
-  });
-
-  return loader;
-};
-
-const getBabelLoader = function(rules) {
-  return getLoader(rules, babelLoaderMatcher);
-};
-
-const injectBabelPlugin = function(pluginName, config) {
-  const loader = getBabelLoader(config.module.rules);
-  if (!loader) {
-    console.log('babel-loader not found');
-    return config;
-  }
-  // Older versions of webpack have `plugins` on `loader.query` instead of `loader.options`.
-  const options = loader.options || loader.query;
-  options.plugins =  [pluginName].concat(options.plugins || []);
+/**
+ * USAGE: compose(createLogger('/tmp/webpack.config.json'), ...)
+ * @param {string} outputPath
+ */
+const createLogger = outputPath => (config, _env) => {
+  const fs = require('fs');
+  const replacer = (_, v) => (v instanceof RegExp ? v.toString() : v);
+  fs.writeFileSync(outputPath, JSON.stringify(config, replacer, 2));
   return config;
 };
 
-const compose = function(...funcs) {
-  if (funcs.length === 0) {
-    return config => config;
-  }
+const regexEquals = (x, y) => x.toString() === y.toString();
 
-  if (funcs.length === 1) {
-    return funcs[0];
-  }
+const getLoaderFactory = regex => config => rewiredUtils.getLoader(
+  config.module.rules,
+  rule => rule.test && regexEquals(rule.test, regex),
+);
 
-  return funcs.reduce((a, b) => (config, env) => a(b(config, env), env));
-};
+const getTsLoader = getLoaderFactory(/\.(ts|tsx)$/);
+const getCssLoader = getLoaderFactory(/\.css$/);
 
 module.exports = {
-  getLoader,
-  loaderNameMatches,
-  getBabelLoader,
-  injectBabelPlugin,
-  compose,
-};
+  rewiredUtils,
+  createLogger,
+  regexEquals,
+  getTsLoader,
+  getCssLoader,
+  rewireCssModules,
+}
