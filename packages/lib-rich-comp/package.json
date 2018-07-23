@@ -1,0 +1,34 @@
+{
+  "name": "@app/rich-comp",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts-ts": "2.16.0"
+  },
+  "scripts": {
+    "_format-base": "prettier --config ./prettier.config.js \"src/**/*.{ts,tsx,json,css,scss}\"",
+    "format": "npm run _format-base -- --write",
+    "format-check": "npm run _format-base -- --list-different",
+    "precommit": "lint-staged",
+    "start": "react-app-rewired start --scripts-version react-scripts-ts",
+    "build": "react-app-rewired build --scripts-version react-scripts-ts",
+    "test": "react-app-rewired test --scripts-version react-scripts-ts --env=jsdom",
+    "eject": "react-scripts-ts eject"
+  },
+  "devDependencies": {
+    "@app/rewire": "0.1.0",
+    "@types/jest": "^23.3.0",
+    "@types/node": "^10.5.2",
+    "@types/react": "^16.4.6",
+    "@types/react-dom": "^16.0.6",
+    "typescript": "^2.9.2"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,json,css,scss}": [
+      "prettier --config ./prettier.config.js --write",
+      "git add"
+    ]
+  }
+}
