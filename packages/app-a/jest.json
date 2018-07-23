@@ -1,0 +1,46 @@
+{
+  "collectCoverageFrom": [
+    "src/**/*.{js,jsx,ts,tsx}"
+  ],
+  "setupFiles": [
+    "/Users/s.uzuki/repo/github.com/untsamphan/cra-ts-monorepo-example/node_modules/react-scripts-ts/config/polyfills.js"
+  ],
+  "testMatch": [
+    "<rootDir>/src/**/__tests__/**/*.(j|t)s?(x)",
+    "<rootDir>/src/**/?(*.)(spec|test).(j|t)s?(x)"
+  ],
+  "testEnvironment": "node",
+  "testURL": "http://localhost",
+  "transform": {
+    "^.+\\.(js|jsx|mjs)$": "/Users/s.uzuki/repo/github.com/untsamphan/cra-ts-monorepo-example/node_modules/react-app-rewired/scripts/utils/babelTransform.js",
+    "^.+\\.tsx?$": "/Users/s.uzuki/repo/github.com/untsamphan/cra-ts-monorepo-example/node_modules/react-scripts-ts/config/jest/typescriptTransform.js",
+    "^.+\\.css$": "/Users/s.uzuki/repo/github.com/untsamphan/cra-ts-monorepo-example/node_modules/react-scripts-ts/config/jest/cssTransform.js",
+    "^(?!.*\\.(js|jsx|mjs|css|json)$)": "/Users/s.uzuki/repo/github.com/untsamphan/cra-ts-monorepo-example/node_modules/react-scripts-ts/config/jest/fileTransform.js",
+    ".+\\.(css|styl|less|sass|scss)$": "jest-css-modules-transform"
+  },
+  "transformIgnorePatterns": [
+    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$"
+  ],
+  "moduleNameMapper": {
+    "^react-native$": "react-native-web"
+  },
+  "moduleFileExtensions": [
+    "web.ts",
+    "ts",
+    "web.tsx",
+    "tsx",
+    "web.js",
+    "js",
+    "web.jsx",
+    "jsx",
+    "json",
+    "node",
+    "mjs"
+  ],
+  "globals": {
+    "ts-jest": {
+      "tsConfigFile": "/Users/s.uzuki/repo/github.com/untsamphan/cra-ts-monorepo-example/packages/app-a/tsconfig.test.json"
+    }
+  },
+  "rootDir": "/Users/s.uzuki/repo/github.com/untsamphan/cra-ts-monorepo-example/packages/app-a"
+}

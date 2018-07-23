@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './App.css';
 
-import { Main } from 'lib-simple-comp';
+import { Main } from '@app/simple-comp';
 import { CSSModuleSample } from './CSSModuleSample';
 import logo from './logo.svg';
 import { SCSSModuleSample } from './SCSSModuleSample';
