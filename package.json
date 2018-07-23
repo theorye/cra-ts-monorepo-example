@@ -2,8 +2,7 @@
   "private": true,
   "name": "cra-ts-monorepo-example",
   "workspaces": {
-    "packages": ["packages/*"],
-    "nohoist": ["**/react-scripts-ts", "**/react-scripts-ts/**"]
+    "packages": ["packages/*"]
   },
   "scripts": {
     "precommit": "lerna run --concurrency 1 --stream precommit",
