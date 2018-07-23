@@ -7,7 +7,7 @@ import logo from './logo.svg';
 import { SCSSModuleSample } from './SCSSModuleSample';
 
 class App extends React.Component {
-  public render() {
+  render() {
     return (
       <div className="App">
         <header className="App-header">
